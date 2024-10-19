@@ -12,8 +12,8 @@
 
 class Calendar {
   public:
-    Calendar(WiFiClass &wifir, GxEPD2_3C<GxEPD2_750c_Z08, GxEPD2_750c_Z08::HEIGHT> &displayr, struct tm &timeinfor);  // Costruttore
-    void calculateDays(struct tm &timeinfo);  // Metodo pubblico
+    Calendar(WiFiClass &wifir, GxEPD2_3C<GxEPD2_750c_Z08, GxEPD2_750c_Z08::HEIGHT> &displayr, tm &timeinfor);  // Costruttore
+    void calculateDays();  // Metodo pubblico
     int daysInMonth(int thisMonth, int thisYear);
     void drawCalendar();
     void getDay();
@@ -27,8 +27,6 @@ class Calendar {
         bool currentMonth;
     };
     Dayc day[42];
-    
-
 };
 
 #endif

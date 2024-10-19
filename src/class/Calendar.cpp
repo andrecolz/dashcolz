@@ -5,7 +5,7 @@ Calendar::Calendar(WiFiClass &wifir, GxEPD2_3C<GxEPD2_750c_Z08, GxEPD2_750c_Z08:
   
 }
 
-void Calendar::calculateDays(struct tm &timeinfo) {
+void Calendar::calculateDays() {
   int dayInThisMonth = daysInMonth(timeinfo.tm_mon + 1, timeinfo.tm_year);
   int dayLastMonth = daysInMonth(timeinfo.tm_mon, timeinfo.tm_year); //  per tm_year se gennaio -1 se dicembre +1 (da mettere if)
   int dayNextMonth = daysInMonth(timeinfo.tm_mon + 2, timeinfo.tm_year); //  <--- (+1)   forse manco serve visto che prendo i primi giorni
@@ -82,26 +82,8 @@ int Calendar::daysInMonth(int thisMonth, int thisYear){
 }
 
 void Calendar::drawCalendar(){
+  calculateDays();
   display.drawBitmap(0, 0, dashboardIMG, 800, 480, GxEPD_WHITE);
-
-//   int hum = dht.readHumidity();
-//   // Read temperature as Celsius (the default)
-//   int tempe = dht.readTemperature();
-
-//   Serial.print(F("Humidity: "));
-//   Serial.print(hum);
-//   Serial.print(F("%  Temperature: "));
-//   Serial.print(tempe);
-//   Serial.print(F("°C "));
-//   Serial.println("");
-
-//   display.setFont(&FreeMonoBold12pt7b);
-//   display.setTextColor(GxEPD_BLACK);
-//   display.setCursor(716, 267);
-//   display.print(String(tempe));
-
-//   display.setCursor(716, 300);
-//   display.print(String(hum));
 
   int x1 = 32;
   int y1 = 245;

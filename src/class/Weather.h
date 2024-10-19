@@ -1,7 +1,6 @@
 #ifndef WEATHER_H
 #define WEATHER_H
 
-#include "DHT.h"
 #include <WiFi.h>
 #include <Adafruit_GFX.h>
 #include "epd3c/GxEPD2_750c_Z08.h"
@@ -14,11 +13,10 @@
 class Weather{
     public:
         Weather(WiFiClass &wifir, GxEPD2_3C<GxEPD2_750c_Z08, GxEPD2_750c_Z08::HEIGHT> &displayr, struct tm &timeinfor);
-        void dhtInit();
-        int getInternalInfo();
-        int getExternalInfo();
-        int getLocalWeather();
-
+        void drawInternalInfo();
+        void drawExternalInfo();
+        void drawLocalWeather();
+        void drawTemperature();
 
     private:
         WiFiClass &wifi;  // Variabile privata
